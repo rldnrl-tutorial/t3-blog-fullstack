@@ -46,8 +46,10 @@ const getOulineColor = (color?: Color) => {
 
 const getButtonVariantColor = (variant?: Variant, color?: Color) => {
   switch (variant) {
+    case "outline":
+      return `rounded-lg ${getOulineColor(color)}`;
     case "round":
-      return `rounded-full ${getOulineColor(color)}`;
+      return `rounded-full`;
     case "solid":
     default:
       return `rounded-lg ${getSolidColor(color)}`;
