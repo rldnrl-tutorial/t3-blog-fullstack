@@ -18,9 +18,9 @@ export default function Header() {
   }
 
   return (
-    <div className="sticky top-0 z-50 bg-white h-20 py-4 px-6 flex items-center border-b-2">
+    <div className="sticky top-0 z-50 bg-white h-20 py-4 px-6 flex items-center justify-between border-b-2">
       <div className="h-4 flex justify-between items-center">
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4">
           <Link href="/">
             <Button
               disabled={!isActive("/")}
