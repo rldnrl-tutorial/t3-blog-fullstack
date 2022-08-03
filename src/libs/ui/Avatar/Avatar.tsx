@@ -14,8 +14,8 @@ export default function Avatar(props: AvatarProps) {
           className="rounded-full"
           src={props.src}
           alt={props.alt || "avatar"}
-          width={50}
-          height={50}
+          width={40}
+          height={40}
         />
       ) : (
         <div className="overflow-hidden relative w-10 h-10 bg-gray-100 rounded-full dark:bg-gray-600">
