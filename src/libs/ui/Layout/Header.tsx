@@ -42,7 +42,7 @@ export default function Header() {
                   disabled={!isActive("/drafts")}
                 >
                   <CopyIcon />
-                  Draft
+                  <span className="inline-block px-2">Draft</span>
                 </Button>
               </Link>
               <Link passHref href="/create">
@@ -53,7 +53,7 @@ export default function Header() {
                   disabled={!isActive("/create")}
                 >
                   <PlusIcon />
-                  New post
+                  <span className="inline-block px-2">New Post</span>
                 </Button>
               </Link>
             </>
