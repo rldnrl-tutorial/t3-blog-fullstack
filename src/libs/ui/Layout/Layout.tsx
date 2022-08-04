@@ -9,7 +9,7 @@ export default function Layout(props: LayoutProps) {
   return (
     <>
       <Header />
-      <main className="p-7 m-auto">{props.children}</main>
+      <main className="p-4">{props.children}</main>
     </>
   );
 }
