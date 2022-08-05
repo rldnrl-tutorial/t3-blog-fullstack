@@ -4,6 +4,8 @@ import type { AppRouter } from "../server/router";
 import type { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
 import { SessionProvider } from "next-auth/react";
+
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/globals.css";
 
 const MyApp: AppType = ({
@@ -46,5 +48,5 @@ export default withTRPC<AppRouter>({
   /**
    * @link https://trpc.io/docs/ssr
    */
-  ssr: false,
+  ssr: true,
 })(MyApp);
