@@ -33,7 +33,7 @@ export default function Header() {
         onClick={() => setShowMenuList((prevShowMenuList) => !prevShowMenuList)}
       />
       <Dropdown showMenuList={showMenuList}>
-        <DropdownItem to="/draft">Draft</DropdownItem>
+        <DropdownItem to="/drafts">Draft</DropdownItem>
         <DropdownItem to="/create">New Post</DropdownItem>
       </Dropdown>
     </>
@@ -41,7 +41,7 @@ export default function Header() {
 
   const renderSessionDesktopMenu = (
     <>
-      <NavItem to="/draft">
+      <NavItem to="/drafts">
         <Button size="sm" color="success" variant="outline">
           <CopyIcon />
           <span className="inline-block px-2">Draft</span>
