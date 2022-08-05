@@ -1,9 +1,10 @@
 import Image from "next/image";
-import React from "react";
+import clsx from "clsx";
 
 type AvatarProps = {
   src?: string | null;
-  alt?: string;
+  alt?: string | null;
+  className?: string;
 };
 
 export default function Avatar(props: AvatarProps) {
@@ -11,14 +12,19 @@ export default function Avatar(props: AvatarProps) {
     <>
       {props.src ? (
         <Image
-          className="rounded-full"
+          className={clsx("rounded-full", props.className)}
           src={props.src}
           alt={props.alt || "avatar"}
           width={40}
           height={40}
         />
       ) : (
-        <div className="overflow-hidden relative w-10 h-10 bg-gray-100 rounded-full dark:bg-gray-600">
+        <div
+          className={clsx(
+            "overflow-hidden relative w-10 h-10 bg-gray-100 rounded-full dark:bg-gray-600",
+            props.className
+          )}
+        >
           <svg
             className="absolute -left-1 w-12 h-12 text-gray-400"
             fill="currentColor"
