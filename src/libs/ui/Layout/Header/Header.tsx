@@ -69,7 +69,7 @@ export default function Header() {
   }
 
   return (
-    <div className="sticky top-0 z-50 bg-white h-20 py-4 px-6 flex items-center justify-between border-b-2">
+    <div className="sticky top-0 z-50 bg-white h-[8vh] py-4 px-6 flex items-center justify-between border-b-2">
       <NavList>
         <div className={clsx(!isMobile && "flex items-center gap-4")} ref={ref}>
           {session ? renderSessionMenu() : null}
