@@ -1,7 +1,8 @@
 import { z } from "zod";
 import { createRouter } from "./context";
+import { createProtectedRouter } from "./protected-router";
 
-export const postProtectedRouter = createRouter()
+export const postProtectedRouter = createProtectedRouter()
   .mutation("create", {
     input: z.object({
       title: z.string(),
