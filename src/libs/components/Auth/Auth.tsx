@@ -8,9 +8,7 @@ type AuthProps = {
 };
 
 export default function Auth({ fallback, failure, children }: AuthProps) {
-  const { data: session, status } = useSession({
-    required: true,
-  });
+  const { data: session, status } = useSession();
 
   const isUnauthorized = session === null;
 
