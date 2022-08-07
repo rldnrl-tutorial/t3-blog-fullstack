@@ -14,9 +14,7 @@ import { trpc } from "../utils/trpc";
 
 const Post = () => {
   const router = useRouter();
-  const { data: session, status } = useSession({
-    required: true,
-  });
+  const { data: session, status } = useSession();
 
   const loading = status === "loading";
 
