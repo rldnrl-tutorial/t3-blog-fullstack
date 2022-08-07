@@ -2,6 +2,13 @@ import { InferGetServerSidePropsType } from "next";
 import { getProviders, signIn } from "next-auth/react";
 import GithubSignIn from "../../libs/ui/GithubSignIn";
 
+export const getServerSideProps = async () => {
+  const providers = await getProviders();
+  return {
+    props: { providers },
+  };
+};
+
 export default function SignIn({
   providers,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -22,10 +29,3 @@ export default function SignIn({
     </div>
   );
 }
-
-export const getServerSideProps = async () => {
-  const providers = await getProviders();
-  return {
-    props: { providers },
-  };
-};
