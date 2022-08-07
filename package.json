@@ -17,6 +17,7 @@
     "@trpc/react": "^9.26.2",
     "@trpc/server": "^9.26.2",
     "clsx": "^1.2.1",
+    "dayjs": "^1.11.4",
     "flowbite": "^1.5.1",
     "next": "12.2.3",
     "next-auth": "^4.10.2",
