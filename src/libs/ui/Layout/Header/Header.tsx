@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import clsx from "clsx";
@@ -8,18 +9,17 @@ import Avatar from "../../Avatar";
 import NavList from "./NavList";
 import NavItem from "./NavItem";
 import { useMediaQuery, useOnClickOutside } from "../../../hooks";
-import { useRef, useState } from "react";
 import Dropdown, { DropdownItem } from "../../Dropdown";
 import MenuButton from "../../MenuButton";
+import { useRouter } from "next/router";
 
 export default function Header() {
+  const router = useRouter();
   const { data: session, status } = useSession();
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const [showMenuList, setShowMenuList] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  const loading = status === "loading";
 
   const handleOutsideClick = () => {
     setShowMenuList(false);
@@ -64,10 +64,6 @@ export default function Header() {
     return renderSessionDesktopMenu;
   };
 
-  if (loading) {
-    return <div>Loading ...</div>;
-  }
-
   return (
     <div className="sticky top-0 z-50 bg-white h-[8vh] py-4 px-6 flex items-center justify-between border-b-2">
       <NavList>
@@ -81,7 +77,10 @@ export default function Header() {
             className="mr-4 font-semibold"
             size="sm"
             color="success"
-            onClick={() => signOut()}
+            onClick={() => {
+              router.push("/");
+              signOut();
+            }}
           >
             <LockIcon />
             <span className="inline-block px-2">Logout</span>
