@@ -1,8 +1,7 @@
 import { z } from "zod";
 import { createRouter } from "./context";
-import { createProtectedRouter } from "./protected-router";
 
-export const postProtectedRouter = createProtectedRouter()
+export const postProtectedRouter = createRouter()
   .mutation("create", {
     input: z.object({
       title: z.string(),
@@ -42,8 +41,27 @@ export const postProtectedRouter = createProtectedRouter()
     },
   });
 
-export const postRouter = createRouter().query("getAllPosts", {
-  async resolve({ ctx }) {
-    return await ctx.prisma.post.findMany();
-  },
-});
+export const postRouter = createRouter()
+  .query("getAllPosts", {
+    async resolve({ ctx }) {
+      return await ctx.prisma.post.findMany();
+    },
+  })
+  .query("getById", {
+    input: z.string(),
+    async resolve({ input, ctx }) {
+      return await ctx.prisma.post.findUnique({
+        where: {
+          id: input,
+        },
+        include: {
+          author: {
+            select: {
+              name: true,
+              image: true,
+            },
+          },
+        },
+      });
+    },
+  });
