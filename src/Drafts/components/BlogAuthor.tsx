@@ -1,25 +1,20 @@
+import dayjs from "dayjs";
 import { useSession } from "next-auth/react";
 import Avatar from "../../libs/ui/Avatar";
 
 type BlogAuthorProps = {
   date: Date;
   name: string;
+  profileImage?: string | null;
 };
 
 export default function BlogAuthor(props: BlogAuthorProps) {
-  const { data: session, status } = useSession();
-  const loading = status === "loading";
-
-  if (loading) {
-    return <div>Loading ...</div>;
-  }
-
   return (
-    <div className="flex mt-[2px] gap-[2px] items-center">
-      <Avatar src={session?.user?.image} alt={session?.user?.name} />
+    <div className="flex mt-[20px] gap-[2px] items-center">
+      <Avatar src={props.profileImage} alt={props?.name} />
       <span className="font-medium">{props.name}</span>
       <span>—</span>
-      <span>{props.date.toLocaleDateString()}</span>
+      <span>{dayjs(props.date).format("YYYY.MM.DD")}</span>
     </div>
   );
 }
